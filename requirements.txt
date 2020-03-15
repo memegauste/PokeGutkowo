@@ -1,4 +1,4 @@
-django==2.2.8
+django==2.2.10
 django-ckeditor==5.9.0
 sorl-thumbnail==12.6.3
 pillow==7.0.0
