@@ -1,5 +1,5 @@
 django==2.2.8
-django-ckeditor==5.6.1
-sorl-thumbnail==12.5.0
-pillow==6.2.0
-flake8==3.5.0
+django-ckeditor==5.9.0
+sorl-thumbnail==12.6.3
+pillow==7.0.0
+psycopg2-binary==2.8.4
