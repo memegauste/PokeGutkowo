@@ -15,14 +15,13 @@ Including another URLconf
 """
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
-from pokegutkowo.views import IndexView
 from project import settings
 
 urlpatterns = [
-    path('', IndexView.as_view(), name='index'),
     path('admin/', admin.site.urls),
+    path('', include('pokegutkowo.urls')),
 ]
 
 # Media/static

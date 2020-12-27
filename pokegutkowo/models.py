@@ -15,17 +15,14 @@ class SingleInstanceMixin(object):
         super(SingleInstanceMixin, self).clean()
 
 
-POGO_TEAMS = (
+class Player(models.Model):
+    POGO_TEAMS = (
         ('instinct', 'Instinct'),
         ('mystic', 'Mystic'),
         ('valor', 'Valor'),
-)
-
-
-class Players(models.Model):
+    )
     nickname = models.CharField('Nick', max_length=255)
     level = models.IntegerField('Poziom')
-
     team = models.CharField('Zespół', max_length=255, choices=POGO_TEAMS)
     trainer_code = models.CharField('Kod trenera', max_length=12, null=True, blank=True)
 
@@ -40,7 +37,7 @@ class Players(models.Model):
 class Post(models.Model):
     title = models.CharField('Tytuł postu', max_length=255)
     context = RichTextField('Treść postu')
-    author = models.ForeignKey(Players, on_delete=models.CASCADE)
+    author = models.ForeignKey(Player, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Post'
@@ -52,7 +49,7 @@ class Post(models.Model):
 
 class Settings(SingleInstanceMixin, models.Model):
     title = models.CharField('Nazwa strony', max_length=255)
-    owner_acc = models.ForeignKey(Players, on_delete=models.CASCADE)
+    owner_acc = models.ForeignKey(Player, on_delete=models.CASCADE)
     owner_about = models.TextField('O właścicielu')
     owner_screenshot = models.ImageField('Screenshot właściciela')
     discord = models.URLField('Link do discorda', max_length=255)

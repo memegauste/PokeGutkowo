@@ -1,5 +1,6 @@
-django==2.2.8
+django==3.1.4
+djangorestframework==3.12.2
 django-ckeditor==5.9.0
 sorl-thumbnail==12.6.3
-pillow==7.0.0
-psycopg2-binary==2.8.4
+pillow==8.0.1
+psycopg2-binary==2.8.5
