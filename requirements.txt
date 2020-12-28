@@ -4,3 +4,4 @@ django-ckeditor==5.9.0
 sorl-thumbnail==12.6.3
 pillow==8.0.1
 psycopg2-binary==2.8.5
+django-cors-headers==3.6.0
