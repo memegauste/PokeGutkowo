@@ -44,7 +44,7 @@ class Posts extends Component {
         try {
             this.setState({ isLoading: true });
 
-            const res = await fetch('http://127.0.0.1:8000/posts/');
+            const res = await fetch('/posts/');
             const objects = await res.json();
             this.setState({
                 objects: objects,
@@ -120,7 +120,7 @@ class Players extends Component {
         try {
             this.setState({ isLoading: true });
 
-            const res = await fetch('http://127.0.0.1:8000/players/');
+            const res = await fetch('/players/');
             const objects = await res.json();
             this.setState({
                 objects: objects,
@@ -163,7 +163,7 @@ class About extends Component {
         try {
             this.setState({ isLoading: true });
 
-            const res = await fetch('http://127.0.0.1:8000/settings/');
+            const res = await fetch('/settings/');
             const object = await res.json();
             this.setState({
                 object: object,
@@ -205,7 +205,7 @@ class Title extends Component {
         try {
             this.setState({ isLoading: true });
 
-            const res = await fetch('http://127.0.0.1:8000/settings/');
+            const res = await fetch('/settings/');
             const object = await res.json();
             this.setState({
                 object: object,
