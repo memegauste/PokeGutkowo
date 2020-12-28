@@ -1,7 +1,11 @@
 """PokeGutkowo app urls."""
+# Django
 from django.urls import path
 
-from pokegutkowo.views import PlayersView, PostsView, SettingsView
+# Project
+from pokegutkowo.views import PlayersView
+from pokegutkowo.views import PostsView
+from pokegutkowo.views import SettingsView
 
 urlpatterns = [
     path('players/', PlayersView.as_view(), name='players_view'),
