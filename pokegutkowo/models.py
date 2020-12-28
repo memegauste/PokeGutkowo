@@ -61,11 +61,11 @@ class Post(models.Model):
 class Settings(SingleInstanceMixin, models.Model):
     """Settings model."""
 
-    title = models.CharField('Nazwa strony', max_length=255)
-    owner_acc = models.ForeignKey(Player, on_delete=models.CASCADE)
-    owner_about = models.TextField('O właścicielu')
-    owner_screenshot = models.ImageField('Screenshot właściciela')
-    discord = models.URLField('Link do discorda', max_length=255)
+    title = models.CharField('Nazwa strony', max_length=255, blank=True, null=True)
+    owner_acc = models.ForeignKey(Player, on_delete=models.CASCADE, blank=True, null=True)
+    owner_about = models.TextField('O właścicielu', blank=True, null=True)
+    owner_screenshot = models.ImageField('Screenshot właściciela', blank=True, null=True)
+    discord = models.URLField('Link do discorda', max_length=255, blank=True, null=True)
 
     class Meta:  # noqa: D106
         verbose_name = 'Ustawienia'

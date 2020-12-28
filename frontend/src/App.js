@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import {
+    Parser as HtmlToReactParser,
+} from 'html-to-react';
+import {
     BrowserRouter as Router,
     Switch,
     Route,
@@ -59,13 +62,19 @@ class Posts extends Component {
         const indexOfLastObject = currentPage * objectsPerPage;
         const indexOfFirstObject = indexOfLastObject - objectsPerPage;
         const currentObjects = objects.slice(indexOfFirstObject, indexOfLastObject)
+        let htmlToReactParser = new HtmlToReactParser();
 
         const renderObjects = currentObjects.map((item, index) => {
+            let postHTML = htmlToReactParser.parse(item.context);
             return(
             <div>
-                <h3 className='no-margin-h3'>{item.title}</h3>
-                <small>Author: {item.author}</small>
-                <div className='jumbotron' dangerouslySetInnerHTML={{__html: item.context}}></div>
+                <div className='jumbotron py-3'>
+                    <div className='mb-2'>
+                        <h3 className='m-0'>{item.title}</h3>
+                        <small>Author: {item.author}</small>
+                    </div>
+                    {postHTML}
+                </div>
             </div>
             )
         });
@@ -90,10 +99,8 @@ class Posts extends Component {
         });
 
         return(
-            <div>
-                <div className='col-12'>
-                    {renderObjects}
-                </div>
+            <div className='container-fluid'>
+                {renderObjects}
                 <ul className='pagination'>
                     {renderPageNumbers}
                 </ul>
