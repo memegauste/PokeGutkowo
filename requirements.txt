@@ -1,4 +1,4 @@
-django==3.1.14
+django==3.2.24
 djangorestframework==3.12.2
 django-ckeditor==5.9.0
 sorl-thumbnail==12.6.3
