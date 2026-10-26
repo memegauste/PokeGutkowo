@@ -17,14 +17,14 @@ from pokegutkowo.serializers import SettingsSerializer
 class PlayersView(ListAPIView):
     """Player ListAPI view."""
 
-    queryset = Player.objects.all()
+    queryset = Player.objects.order_by('id')
     serializer_class = PlayerSerializer
 
 
 class PostsView(ListAPIView):
     """Post ListAPI view."""
 
-    queryset = Post.objects.all()
+    queryset = Post.objects.select_related('author').order_by('-id')
     serializer_class = PostSerializer
 
 
@@ -36,5 +36,7 @@ class SettingsView(RetrieveAPIView):
     def retrieve(self, request, *args, **kwargs):
         """Return single instance of settings if exists."""
         instance = Settings.objects.first()
+        if instance is None:
+            return Response({})
         serializer = self.get_serializer(instance)
         return Response(serializer.data)

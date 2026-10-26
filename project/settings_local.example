@@ -1,11 +1,4 @@
-DEBUG = False
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+# Optional local overrides. SQLite works without this file.
+# Copy to project/settings_local.py when needed.
+# For PostgreSQL, prefer POSTGRES_DB/USER/PASSWORD/HOST/PORT environment variables.
+DEBUG = True

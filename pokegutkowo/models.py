@@ -3,9 +3,6 @@
 from django.core.exceptions import ValidationError
 from django.db import models
 
-# 3rd-party
-from ckeditor.fields import RichTextField
-
 # Create your models here.
 
 
@@ -14,9 +11,9 @@ class SingleInstanceMixin(object):
 
     def clean(self):  # noqa: D102
         model = self.__class__
-        if (model.objects.count() > 0 and self.id != model.objects.get().id):
+        if model.objects.exclude(pk=self.pk).exists():
             raise ValidationError('Można utworzyć tylko 1 {0} instancję!'.format(model.__name__))
-        super(SingleInstanceMixin, self).clean()
+        super().clean()
 
 
 class Player(models.Model):
@@ -47,7 +44,7 @@ class Post(models.Model):
     """Post model."""
 
     title = models.CharField('Tytuł postu', max_length=255)
-    context = RichTextField('Treść postu')
+    context = models.TextField('Treść postu')
     author = models.ForeignKey(Player, on_delete=models.CASCADE)
 
     class Meta:  # noqa: D106

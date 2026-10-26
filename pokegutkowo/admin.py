@@ -1,6 +1,9 @@
 """Admin file."""
 # Django
 from django.contrib import admin
+from django.db import models
+
+from django_ckeditor_5.widgets import CKEditor5Widget
 
 # Project
 # Register your models here.
@@ -20,7 +23,9 @@ class PlayerAdmin(admin.ModelAdmin):
 class PostAdmin(admin.ModelAdmin):
     """Post admin."""
 
-    pass
+    formfield_overrides = {
+        models.TextField: {'widget': CKEditor5Widget},
+    }
 
 
 @admin.register(Settings)

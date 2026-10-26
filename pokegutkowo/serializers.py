@@ -19,11 +19,11 @@ class PlayerSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     """Post Serializer."""
 
-    author = serializers.StringRelatedField(source='author.nickname', read_only=True)
+    author = serializers.CharField(source='author.nickname', read_only=True)
 
     class Meta:  # noqa: D106
         model = Post
-        fields = ('title', 'context', 'author')
+        fields = ('id', 'title', 'context', 'author')
 
 
 class SettingsSerializer(serializers.ModelSerializer):

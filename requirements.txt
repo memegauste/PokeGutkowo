@@ -1,7 +1,9 @@
-django==3.1.14
-djangorestframework==3.12.2
-django-ckeditor==5.9.0
-sorl-thumbnail==12.6.3
-pillow==10.0.1
-psycopg2-binary==2.8.5
-django-cors-headers==3.6.0
+Django==6.1.2
+djangorestframework==3.18.3
+# Required only to load the historical 0001 migration; CKEditor 4 is not served.
+django-ckeditor==6.7.4
+django-ckeditor-5==0.2.20
+sorl-thumbnail==13.4.0
+Pillow==13.0.0
+psycopg[binary]==3.3.6
+django-cors-headers==4.9.0
